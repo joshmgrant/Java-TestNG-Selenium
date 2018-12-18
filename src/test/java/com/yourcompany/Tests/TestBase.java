@@ -57,6 +57,7 @@ public class TestBase  {
             new Object[]{"Jafari", "12.0", "OS X 10.13"},
             new Object[]{"chrome", "70.0", "OS X 10.13"},
             new Object[]{"firefox", "latest-1", "Windows 7"},
+            new Object[]{"chrome", "69.0", "Windows 10"}
         };
     }
 
@@ -99,6 +100,11 @@ public class TestBase  {
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
+        }
+
+        if (browser.equals("chrome") && version.equals("69.0")){
+            capabilities.setCapability("name", "testWithExtendedDebugging");
+            capabilities.setCapability("extendedDebugging", true);
         }
 
         // Launch remote browser and set it as the current thread
